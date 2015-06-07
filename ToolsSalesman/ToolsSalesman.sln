@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BB8900
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsSalesmanWithoutDI", "..\ToolsSalesmanWithoutDI\ToolsSalesmanWithoutDI.csproj", "{C7FEA1F5-BB86-4302-8007-69EAC02AF190}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsSalesman.Common", "ToolsSalesman.Common\ToolsSalesman.Common.csproj", "{8C08BD83-BBC4-4813-B767-ECC7EE4AF16D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsSalesman.Common", "..\ToolsSalesman.Common\ToolsSalesman.Common.csproj", "{8C08BD83-BBC4-4813-B767-ECC7EE4AF16D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

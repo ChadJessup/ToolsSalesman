@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsSalesman", "ToolsSalesman.csproj", "{4A17019A-E3CC-4D50-A68E-FF89BE8A0C37}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsSalesmanWithDI", "ToolsSalesmanWithDI.csproj", "{4A17019A-E3CC-4D50-A68E-FF89BE8A0C37}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BB8900EB-44E5-4F0F-9F01-86C551C34B4E}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,6 +11,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{BB8900
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsSalesmanWithoutDI", "..\ToolsSalesmanWithoutDI\ToolsSalesmanWithoutDI.csproj", "{C7FEA1F5-BB86-4302-8007-69EAC02AF190}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolsSalesman.Common", "ToolsSalesman.Common\ToolsSalesman.Common.csproj", "{8C08BD83-BBC4-4813-B767-ECC7EE4AF16D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,6 +26,14 @@ Global
 		{4A17019A-E3CC-4D50-A68E-FF89BE8A0C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A17019A-E3CC-4D50-A68E-FF89BE8A0C37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A17019A-E3CC-4D50-A68E-FF89BE8A0C37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7FEA1F5-BB86-4302-8007-69EAC02AF190}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7FEA1F5-BB86-4302-8007-69EAC02AF190}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7FEA1F5-BB86-4302-8007-69EAC02AF190}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7FEA1F5-BB86-4302-8007-69EAC02AF190}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C08BD83-BBC4-4813-B767-ECC7EE4AF16D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C08BD83-BBC4-4813-B767-ECC7EE4AF16D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C08BD83-BBC4-4813-B767-ECC7EE4AF16D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C08BD83-BBC4-4813-B767-ECC7EE4AF16D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

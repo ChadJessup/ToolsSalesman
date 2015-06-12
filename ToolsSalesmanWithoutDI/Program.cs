@@ -4,7 +4,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using ToolsSalesman.Common;
 using ToolsSalesman.Common.Interfaces;
+using ToolsSalesman.Common.Tools;
 
 namespace ToolsSalesmanWithoutDI
 {
@@ -46,17 +48,73 @@ namespace ToolsSalesmanWithoutDI
 
         private IToolbox LoadToolbox3(JobTitle jobSelection)
         {
-            throw new NotImplementedException();
+            IToolbox toolbox;
+
+            switch (jobSelection)
+            {
+                case JobTitle.Carpenter:
+                    toolbox = new ToolboxConstuctor(new Nail(), new Saw(), new Clamp(), new Hammer(), new MagnifyingGlass());
+                    break;
+                case JobTitle.ComputerRepairman:
+                    toolbox = new ToolboxConstuctor(new Screw(), new WireCutter(), new Tweezer(), new ScrewDriver(), new MagnifyingGlass());
+                    break;
+                case JobTitle.ElectricalEngineer:
+                    toolbox = new ToolboxConstuctor(new Glue(), new WireCutter(), new Clamp(), new ScrewDriver(), new MagnifyingGlass());
+                    break;
+                case JobTitle.Mechanic:
+                    toolbox = new ToolboxConstuctor(new Screw(), new WireCutter(), new Clamp(), new ImpactWrench(), new MagnifyingGlass());
+                    break;
+                default:
+                    throw new InvalidCastException("Unknown job!");
+            }
+
+            return toolbox;
         }
 
         private IToolbox LoadToolbox2(JobTitle jobSelection)
         {
-            throw new NotImplementedException();
+            IToolbox toolbox = new Toolbox();
+            
+            switch(jobSelection)
+            {
+                case JobTitle.Carpenter:
+                    toolbox.BindingTool = new Nail();
+                    toolbox.CuttingTool = new Saw();
+                    toolbox.HoldingTool = new Clamp();
+                    toolbox.ImpactTool = new Hammer();
+                    toolbox.MagnifyingTool = new MagnifyingGlass();
+                    break;
+                case JobTitle.ComputerRepairman:
+                    toolbox.BindingTool = new Screw();
+                    toolbox.CuttingTool = new WireCutter();
+                    toolbox.HoldingTool = new Tweezer();
+                    toolbox.ImpactTool = new ScrewDriver();
+                    toolbox.MagnifyingTool = new MagnifyingGlass();
+                    break;
+                case JobTitle.ElectricalEngineer:
+                    toolbox.BindingTool = new Glue();
+                    toolbox.CuttingTool = new WireCutter();
+                    toolbox.HoldingTool = new Clamp();
+                    toolbox.ImpactTool = new ScrewDriver();
+                    toolbox.MagnifyingTool = new MagnifyingGlass();
+                    break;
+                case JobTitle.Mechanic:
+                    toolbox.BindingTool = new Screw();
+                    toolbox.CuttingTool = new WireCutter();
+                    toolbox.HoldingTool = new Clamp();
+                    toolbox.ImpactTool = new ImpactWrench();
+                    toolbox.MagnifyingTool = new MagnifyingGlass();
+                    break;
+                default:
+                    throw new InvalidCastException("Unknown job!");
+            }
+
+            return toolbox;
         }
 
         private IToolbox LoadToolbox1(JobTitle jobSelection)
         {
-            throw new NotImplementedException();
+            return new ToolboxWithJobTitle(jobSelection);
         }
 
         private void ListJobs()

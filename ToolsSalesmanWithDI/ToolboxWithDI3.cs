@@ -15,13 +15,31 @@ namespace ToolsSalesman
         [Inject]
         public IHolder HoldingTool { get; set; }
 
-        private readonly IImpactTool ImpactTool;
-        private readonly IMagnifier MagnifyingTool;
+        public IImpactTool ImpactTool
+        {
+            get { return this.impactTool; }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public IMagnifier MagnifyingTool
+        {
+            get { return this.magnifyingTool; }
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        private readonly IImpactTool impactTool;
+        private readonly IMagnifier magnifyingTool;
 
         public ToolboxWithDI3(IImpactTool impact, IMagnifier magnifier)
         {
-            this.ImpactTool = impact;
-            this.MagnifyingTool = magnifier;
+            this.impactTool = impact;
+            this.magnifyingTool = magnifier;
         }
 
         public void UseAllTools()

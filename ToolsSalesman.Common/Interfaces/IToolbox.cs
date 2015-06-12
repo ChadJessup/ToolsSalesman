@@ -8,6 +8,12 @@ namespace ToolsSalesman.Common.Interfaces
 {
     public interface IToolbox
     {
+        IBinder BindingTool { get; set; }
+        ICutter CuttingTool { get; set; }
+        IHolder HoldingTool { get; set; }
+        IImpactTool ImpactTool { get; set; }
+        IMagnifier MagnifyingTool { get; set; }
+
         void UseAllTools();
     }
 }

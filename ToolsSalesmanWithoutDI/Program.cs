@@ -46,36 +46,16 @@ namespace ToolsSalesmanWithoutDI
             Console.ReadKey();
         }
 
-        private IToolbox LoadToolbox3(JobTitle jobSelection)
+        private IToolbox LoadToolbox1(JobTitle jobSelection)
         {
-            IToolbox toolbox;
-
-            switch (jobSelection)
-            {
-                case JobTitle.Carpenter:
-                    toolbox = new ToolboxConstuctor(new Nail(), new Saw(), new Clamp(), new Hammer(), new MagnifyingGlass());
-                    break;
-                case JobTitle.ComputerRepairman:
-                    toolbox = new ToolboxConstuctor(new Screw(), new WireCutter(), new Tweezer(), new ScrewDriver(), new MagnifyingGlass());
-                    break;
-                case JobTitle.ElectricalEngineer:
-                    toolbox = new ToolboxConstuctor(new Glue(), new WireCutter(), new Clamp(), new ScrewDriver(), new MagnifyingGlass());
-                    break;
-                case JobTitle.Mechanic:
-                    toolbox = new ToolboxConstuctor(new Screw(), new WireCutter(), new Clamp(), new ImpactWrench(), new MagnifyingGlass());
-                    break;
-                default:
-                    throw new InvalidCastException("Unknown job!");
-            }
-
-            return toolbox;
+            return new ToolboxWithJobTitle(jobSelection);
         }
 
         private IToolbox LoadToolbox2(JobTitle jobSelection)
         {
             IToolbox toolbox = new Toolbox();
-            
-            switch(jobSelection)
+
+            switch (jobSelection)
             {
                 case JobTitle.Carpenter:
                     toolbox.BindingTool = new Nail();
@@ -112,9 +92,29 @@ namespace ToolsSalesmanWithoutDI
             return toolbox;
         }
 
-        private IToolbox LoadToolbox1(JobTitle jobSelection)
+        private IToolbox LoadToolbox3(JobTitle jobSelection)
         {
-            return new ToolboxWithJobTitle(jobSelection);
+            IToolbox toolbox;
+
+            switch (jobSelection)
+            {
+                case JobTitle.Carpenter:
+                    toolbox = new ToolboxConstuctor(new Nail(), new Saw(), new Clamp(), new Hammer(), new MagnifyingGlass());
+                    break;
+                case JobTitle.ComputerRepairman:
+                    toolbox = new ToolboxConstuctor(new Screw(), new WireCutter(), new Tweezer(), new ScrewDriver(), new MagnifyingGlass());
+                    break;
+                case JobTitle.ElectricalEngineer:
+                    toolbox = new ToolboxConstuctor(new Glue(), new WireCutter(), new Clamp(), new ScrewDriver(), new MagnifyingGlass());
+                    break;
+                case JobTitle.Mechanic:
+                    toolbox = new ToolboxConstuctor(new Screw(), new WireCutter(), new Clamp(), new ImpactWrench(), new MagnifyingGlass());
+                    break;
+                default:
+                    throw new InvalidCastException("Unknown job!");
+            }
+
+            return toolbox;
         }
 
         private void ListJobs()

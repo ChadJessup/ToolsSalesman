@@ -1,11 +1,10 @@
 ﻿using Ninject.Modules;
 using ToolsSalesman.Common.Interfaces;
-using ToolsSalesman.Common.Jobs;
 using ToolsSalesman.Common.Tools;
 
 namespace ToolsSalesmanWithDI
 {
-    [Job(JobTitle.Carpenter)]
+    [Job("Carpenter")]
     public class Carpenter : NinjectModule
     {
          public override void Load()
@@ -18,7 +17,7 @@ namespace ToolsSalesmanWithDI
          }
     }
 
-    [Job(JobTitle.Mechanic)]
+    [Job("Mechanic")]
     public class Mechanic : NinjectModule
     {
         public override void Load()
@@ -31,7 +30,7 @@ namespace ToolsSalesmanWithDI
         }
     }
 
-    [Job(JobTitle.ElectricalEngineer)]
+    [Job("ElectricalEngineer")]
     public class ElectricalEngineer : NinjectModule
     {
         public override void Load()
@@ -44,7 +43,7 @@ namespace ToolsSalesmanWithDI
         }
     }
 
-    [Job(JobTitle.ComputerRepairman)]
+    [Job("ComputerRepairman")]
     public class ComputerRepairman : NinjectModule
     {
         public override void Load()

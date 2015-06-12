@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using Ninject;
 using Ninject.Modules;
 using ToolsSalesman.Common.Interfaces;
-using ToolsSalesman.Common.Jobs;
 using ToolsSalesmanWithDI;
 
 namespace ToolsSalesman
@@ -33,9 +32,12 @@ namespace ToolsSalesman
         private void SalesmanGo()
         {
             Console.WriteLine(Constants.Pitch);
-            this.ListJobs();
+            IEnumerable<string> jobTitles = this.GetJobTitles();
+            
+            this.ListJobs(jobTitles);
 
-            JobTitle jobSelection = this.GetJob();
+
+            string jobSelection = this.GetJob(jobTitles);
             
             Console.WriteLine();
 
@@ -52,7 +54,7 @@ namespace ToolsSalesman
             Console.ReadKey();
         }
 
-        private void ListJobs()
+        private void ListJobs(IEnumerable<string> titles)
         {
             Console.WriteLine(Constants.QuestionHeader);
             Console.WriteLine(Constants.NewLine);
@@ -60,7 +62,7 @@ namespace ToolsSalesman
             string output = string.Empty;
             int count = 1;
 
-            foreach(string job in Enum.GetNames(typeof(JobTitle)))
+            foreach(string job in titles)
             {
                 output += count + ". " + job + Constants.NewLine;
                 count++;
@@ -73,29 +75,54 @@ namespace ToolsSalesman
             Console.WriteLine(Constants.AfterList);
         }
 
-        private JobTitle GetJob()
+        private string GetJob(IEnumerable<string> titles)
         {
             bool waitingForValidInput = true;
             int number = -1;
             while (waitingForValidInput)
             {
                 string input = Console.ReadLine();
-                if(Int32.TryParse(input, out number) && Enum.IsDefined(typeof(JobTitle), number))
+                if(Int32.TryParse(input, out number))
                 {
-                    return (JobTitle)number;
+                    if(number > titles.Count() || number == 0)
+                    {
+                        Console.WriteLine("Unknown job number, try again...");
+                        continue;
+                    }
+
+                    return titles.ElementAt(number - 1);
+                }
+                else
+                {
+                    Console.WriteLine("Unknown job number, try again...");
+                    continue;
                 }
             }
 
             throw new InvalidOperationException("Something broke, fix meeeeeee!");
         }
 
-        private IKernel LoadModule(JobTitle jobSelection)
+        private IEnumerable<string> GetJobTitles()
+        {
+            List<string> jobTitles = new List<string>();
+            foreach (var type in Assembly.GetExecutingAssembly().GetTypes().Where(t => t.IsClass))
+            {
+                foreach (JobAttribute attr in type.GetCustomAttributes(typeof(JobAttribute), inherit: true))
+                {
+                    jobTitles.Add(attr.JobTitle);
+                }
+            }
+
+            return jobTitles;
+        }
+
+        private IKernel LoadModule(string jobSelection)
         {
             foreach (var type in Assembly.GetExecutingAssembly().GetTypes().Where(t => t.IsClass))
             {
                 foreach (JobAttribute attr in type.GetCustomAttributes(typeof(JobAttribute), inherit: true))
                 {
-                    if (attr.Job == jobSelection)
+                    if (attr.JobTitle == jobSelection)
                     {
                         return new StandardKernel((INinjectModule)Activator.CreateInstance(type));
                     }

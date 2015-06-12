@@ -1,5 +1,5 @@
 ﻿
-namespace ToolsSalesman.Common.Jobs
+namespace ToolsSalesmanWithoutDI
 {
     public enum JobTitle
     {

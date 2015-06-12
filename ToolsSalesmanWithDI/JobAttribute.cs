@@ -1,16 +1,15 @@
 ﻿namespace ToolsSalesmanWithDI
 {
     using System;
-    using ToolsSalesman.Common.Jobs;
 
     [AttributeUsage(AttributeTargets.Class)]
     public class JobAttribute : Attribute
     {
-        public JobTitle Job { get; set; }
+        public string JobTitle { get; set; }
 
-        public JobAttribute(JobTitle jobTitle)
+        public JobAttribute(string jobTitle)
         {
-            this.Job = jobTitle;
+            this.JobTitle = jobTitle;
         }
     }
 }
